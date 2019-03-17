@@ -1,0 +1,104 @@
+{
+  "project_info": {
+    "project_number": "36859740831",
+    "firebase_url": "https://login-demo-31838.firebaseio.com",
+    "project_id": "login-demo-31838",
+    "storage_bucket": "login-demo-31838.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36859740831:android:42830753d1d3a22b",
+        "android_client_info": {
+          "package_name": "com.example.shivam.ideapitchingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36859740831-ubbbm0ee9hd01a3d88bb7p3ha7ghqfkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPW4s_6fhQFkSB5Jyi23pMjsohKOvFKqY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36859740831:android:a93bc4c279cb1e3c",
+        "android_client_info": {
+          "package_name": "com.example.shivam.loginfirebaseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36859740831-ubbbm0ee9hd01a3d88bb7p3ha7ghqfkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPW4s_6fhQFkSB5Jyi23pMjsohKOvFKqY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36859740831:android:7ed6915c950ee9d7",
+        "android_client_info": {
+          "package_name": "com.example.shivam.toomanyideasmaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36859740831-ubbbm0ee9hd01a3d88bb7p3ha7ghqfkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPW4s_6fhQFkSB5Jyi23pMjsohKOvFKqY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,23 @@
+name: idea_pitching_app
+description: A flutter application for viewing and pitching new ideas.
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_database: 1.0.3
+
+  http: "^0.11.3+16"
+  cupertino_icons: ^0.1.2
+  firebase_auth: ^0.6.6
+  flutter_markdown: "^0.2.0"
+  url_launcher: "^3.0.1"
+  share: "^0.4.0"
+  cloud_firestore: ^0.7.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true

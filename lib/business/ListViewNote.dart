@@ -14,6 +14,9 @@ class ListViewNote extends StatefulWidget {
 final notesReference = FirebaseDatabase.instance.reference().child('notes');
 
 class _ListViewNoteState extends State<ListViewNote> {
+
+  bool alreadySaved = true;
+
   List<Note> items;
   StreamSubscription<Event> _onNoteAddedSubscription;
   StreamSubscription<Event> _onNoteChangedSubscription;
@@ -48,11 +51,11 @@ class _ListViewNoteState extends State<ListViewNote> {
         body: Center(
           child: ListView.builder(
               itemCount: items.length,
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(2.0),
               itemBuilder: (context, position) {
                 return Column(
                   children: <Widget>[
-                    Divider(height: 5.0),
+                    Divider(height: 55.0),
                     ListTile(
                       title: Text(
                         '${items[position].title}',
@@ -85,9 +88,15 @@ class _ListViewNoteState extends State<ListViewNote> {
                           IconButton(
                               icon: const Icon(Icons.remove_circle_outline),
                               onPressed: () => _deleteNote(context, items[position], position)),
+                          IconButton(icon: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border,color: Colors.red,),
+                            onPressed: () => alreadySaved = !alreadySaved,
+                          ),
                         ],
                       ),
                       onTap: () => _navigateToNote(context, items[position]),
+                      trailing: new RaisedButton(onPressed: (){
+
+                      }, child: new Text("comment"))
                     ),
                   ],
                 );

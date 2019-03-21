@@ -2,18 +2,19 @@ import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 
 import 'package:flutter/material.dart';
+import 'package:idea_pitching_app/business/CommentsNoteScreen.dart';
 
 import 'package:idea_pitching_app/model/note.dart';
-import 'package:idea_pitching_app/sports/SNoteScreen.dart';
 
-class SListViewNote extends StatefulWidget {
+class BusinessComments extends StatefulWidget {
   @override
-  _ListViewNoteState createState() => new _ListViewNoteState();
+  CommentsState createState() => new CommentsState();
 }
 
-final notesReference = FirebaseDatabase.instance.reference().child('sports');
+final notesReference = FirebaseDatabase.instance.reference().child('notes');
 
-class _ListViewNoteState extends State<SListViewNote> {
+class CommentsState extends State<BusinessComments> {
+
   List<Note> items;
   StreamSubscription<Event> _onNoteAddedSubscription;
   StreamSubscription<Event> _onNoteChangedSubscription;
@@ -48,46 +49,36 @@ class _ListViewNoteState extends State<SListViewNote> {
         body: Center(
           child: ListView.builder(
               itemCount: items.length,
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(2.0),
               itemBuilder: (context, position) {
                 return Column(
                   children: <Widget>[
-                    Divider(height: 5.0),
+                    Divider(height: 55.0),
                     ListTile(
-                      title: Text(
-                        '${items[position].title}',
-                        style: TextStyle(
-                          fontSize: 22.0,
-                          color: Colors.deepOrangeAccent,
+                        title: Text(
+                          '${items[position].comments}',
+                          style: TextStyle(
+                            fontSize: 22.0,
+                            color: Colors.deepOrangeAccent,
+                          ),
                         ),
-                      ),
-                      subtitle: Text(
-                        '${items[position].description}',
-                        style: new TextStyle(
-                          fontSize: 18.0,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      leading: Column(
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.all(10.0)),
-                          CircleAvatar(
-                            backgroundColor: Colors.blueAccent,
-                            radius: 15.0,
-                            child: Text(
-                              '${position + 1}',
-                              style: TextStyle(
-                                fontSize: 22.0,
-                                color: Colors.white,
+                        leading: Column(
+                          children: <Widget>[
+                            Padding(padding: EdgeInsets.all(10.0)),
+                            CircleAvatar(
+                              backgroundColor: Colors.blueAccent,
+                              radius: 15.0,
+                              child: Text(
+                                '${position + 1}',
+                                style: TextStyle(
+                                  fontSize: 22.0,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
-                          ),
-                          IconButton(
-                              icon: const Icon(Icons.remove_circle_outline),
-                              onPressed: () => _deleteNote(context, items[position], position)),
-                        ],
-                      ),
-                      onTap: () => _navigateToNote(context, items[position]),
+                          ],
+                        ),
+                        onTap: () => _navigateToNote(context, items[position]),
                     ),
                   ],
                 );
@@ -125,14 +116,14 @@ class _ListViewNoteState extends State<SListViewNote> {
   void _navigateToNote(BuildContext context, Note note) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(note)),
+      MaterialPageRoute(builder: (context) => CommentsNoteScreen(note)),
     );
   }
 
   void _createNewNote(BuildContext context) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, '', '',''))),
+      MaterialPageRoute(builder: (context) => CommentsNoteScreen(Note(null, '', '',''))),
     );
   }
 }

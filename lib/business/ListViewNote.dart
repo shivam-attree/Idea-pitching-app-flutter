@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 
 import 'package:flutter/material.dart';
+import 'package:idea_pitching_app/business/BusinessComments.dart';
 
 import 'package:idea_pitching_app/model/note.dart';
 import 'package:idea_pitching_app/business/NoteScreen.dart';
@@ -95,7 +96,7 @@ class _ListViewNoteState extends State<ListViewNote> {
                       ),
                       onTap: () => _navigateToNote(context, items[position]),
                       trailing: new RaisedButton(onPressed: (){
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => BusinessComments()));
                       }, child: new Text("comment"))
                     ),
                   ],
@@ -141,7 +142,7 @@ class _ListViewNoteState extends State<ListViewNote> {
   void _createNewNote(BuildContext context) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, '', ''))),
+      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, '', '',''))),
     );
   }
 }

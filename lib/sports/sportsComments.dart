@@ -4,19 +4,16 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'package:idea_pitching_app/model/note.dart';
-import 'package:idea_pitching_app/sports/SNoteScreen.dart';
-import 'package:idea_pitching_app/sports/sportsComments.dart';
+import 'package:idea_pitching_app/sports/sportsNoteScreen.dart';
 
-class SListViewNote extends StatefulWidget {
+class sportsComments extends StatefulWidget {
   @override
-  _ListViewNoteState createState() => new _ListViewNoteState();
+  sportsCommentsState createState() => new sportsCommentsState();
 }
 
 final notesReference = FirebaseDatabase.instance.reference().child('sports');
 
-class _ListViewNoteState extends State<SListViewNote> {
-
-  bool alreadySaved = true;
+class sportsCommentsState extends State<sportsComments> {
 
   List<Note> items;
   StreamSubscription<Event> _onNoteAddedSubscription;
@@ -58,46 +55,30 @@ class _ListViewNoteState extends State<SListViewNote> {
                   children: <Widget>[
                     Divider(height: 55.0),
                     ListTile(
-                        title: Text(
-                          '${items[position].title}',
-                          style: TextStyle(
-                            fontSize: 22.0,
-                            color: Colors.deepOrangeAccent,
-                          ),
+                      title: Text(
+                        '${items[position].comments}',
+                        style: TextStyle(
+                          fontSize: 22.0,
+                          color: Colors.deepOrangeAccent,
                         ),
-                        subtitle: Text(
-                          '${items[position].description}',
-                          style: new TextStyle(
-                            fontSize: 18.0,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                        leading: Column(
-                          children: <Widget>[
-                            Padding(padding: EdgeInsets.all(10.0)),
-                            CircleAvatar(
-                              backgroundColor: Colors.blueAccent,
-                              radius: 15.0,
-                              child: Text(
-                                '${position + 1}',
-                                style: TextStyle(
-                                  fontSize: 22.0,
-                                  color: Colors.white,
-                                ),
+                      ),
+                      leading: Column(
+                        children: <Widget>[
+                          Padding(padding: EdgeInsets.all(10.0)),
+                          CircleAvatar(
+                            backgroundColor: Colors.blueAccent,
+                            radius: 15.0,
+                            child: Text(
+                              '${position + 1}',
+                              style: TextStyle(
+                                fontSize: 22.0,
+                                color: Colors.white,
                               ),
                             ),
-                            IconButton(
-                                icon: const Icon(Icons.remove_circle_outline),
-                                onPressed: () => _deleteNote(context, items[position], position)),
-                            IconButton(icon: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border,color: Colors.red,),
-                              onPressed: () => alreadySaved = !alreadySaved,
-                            ),
-                          ],
-                        ),
-                        onTap: () => _navigateToNote(context, items[position]),
-                        trailing: new RaisedButton(onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => sportsComments()));
-                        }, child: new Text("comment"))
+                          ),
+                        ],
+                      ),
+                      onTap: () => _navigateToNote(context, items[position]),
                     ),
                   ],
                 );
@@ -135,14 +116,14 @@ class _ListViewNoteState extends State<SListViewNote> {
   void _navigateToNote(BuildContext context, Note note) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(note)),
+      MaterialPageRoute(builder: (context) => sportsNoteScreen(note)),
     );
   }
 
   void _createNewNote(BuildContext context) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NoteScreen(Note(null, '', '',''))),
+      MaterialPageRoute(builder: (context) => sportsNoteScreen(Note(null, '', '',''))),
     );
   }
 }

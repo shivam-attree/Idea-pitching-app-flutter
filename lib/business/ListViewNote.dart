@@ -16,7 +16,7 @@ final notesReference = FirebaseDatabase.instance.reference().child('notes');
 
 class _ListViewNoteState extends State<ListViewNote> {
 
-  bool alreadySaved = true;
+  bool alreadySaved = false;
 
   List<Note> items;
   StreamSubscription<Event> _onNoteAddedSubscription;
@@ -89,8 +89,15 @@ class _ListViewNoteState extends State<ListViewNote> {
                           IconButton(
                               icon: const Icon(Icons.remove_circle_outline),
                               onPressed: () => _deleteNote(context, items[position], position)),
-                          IconButton(icon: Icon(alreadySaved ? Icons.favorite : Icons.favorite_border,color: Colors.red,),
-                            onPressed: () => alreadySaved = !alreadySaved,
+                          IconButton(icon: new Icon(
+                            alreadySaved ? Icons.favorite : Icons.favorite_border,
+                            color: alreadySaved ? Colors.red : null,
+                          ),
+                            onPressed: () {
+                              setState(() {
+                                  alreadySaved = !alreadySaved;
+                              });
+                            },
                           ),
                         ],
                       ),

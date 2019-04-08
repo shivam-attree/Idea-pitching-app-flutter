@@ -80,7 +80,7 @@ class IdeasList extends StatelessWidget {
     }
     return CustomScrollView(
       slivers: <Widget>[
-        makeHeader('Sections'),
+        makeHeader('BrainStorming'),
         SliverFixedExtentList(
           itemExtent: 150.0,
           delegate: SliverChildListDelegate(

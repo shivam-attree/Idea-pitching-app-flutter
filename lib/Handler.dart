@@ -39,7 +39,7 @@ class _MyAppState extends State<Handler> {
         accentColor: Colors.indigo[500],
         brightness: brightness,
       ),
-      home: new MyHomePage(title: 'Too many ideas',auth: auth, onSignOut:onSignOut),
+      home: new MyHomePage(title: 'Real time ideas',auth: auth, onSignOut:onSignOut),
     );
   }
 }
@@ -208,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
           appBar: new AppBar(
               title: new Text(widget.title),
               actions: <Widget>[
-                new IconButton(icon: new Icon(Icons.home), onPressed: (){
+                new IconButton(icon: new Icon(Icons.add_to_home_screen), onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => IdeasList(auth: auth,onSignOut: onSignOut,)));
                 })
               ],
